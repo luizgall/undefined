@@ -51,6 +51,10 @@ while True:
             pygame.quit()
             sys.exit()
         if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                char.interact = True
+            else:
+                char.interact = False                     
             if event.key == pygame.K_LEFT:
                 char.vel[0] = -20
             elif event.key == pygame.K_RIGHT:
@@ -86,6 +90,6 @@ while True:
     tela.fill((255,255,255))
     for i in range(len(MAP)):
         pygame.draw.rect(tela, BLACK, (MAP[i][0],MAP[i][1],20,20))    
-    char.draw(BLACK, tela)
+    char.draw(tela)
     pygame.display.flip()
     clock.tick(60)
