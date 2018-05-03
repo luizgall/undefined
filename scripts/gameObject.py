@@ -1,6 +1,5 @@
 import pygame
-from random import randint
-
+import random
 class GameObject:
     def __init__(self, name, pos):
         self.pos = pos

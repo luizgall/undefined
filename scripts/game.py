@@ -3,6 +3,7 @@ import pygame
 import sys
 from physics import Physics
 from gameObject import GameObject
+import random
 
 physics = Physics()
 BLACK = (0,0,0)
