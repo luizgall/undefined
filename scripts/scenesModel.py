@@ -47,6 +47,8 @@ def menuPrincipalUpdate(objetos, cena):
                 if cena.modo == "PRINCIPAL":                
                     if objetos[1].selecionado:
                         cena.modo = "JOGO"
+                        cena.terminou = True
+                        cena.proximaCena = "faseUm"
                     elif objetos[2].selecionado:
                         cena.modo = "INSTRUCOES"
                     elif objetos[3].selecionado:
