@@ -1,7 +1,7 @@
 #IMPORTS
 import pygame
 import sys
-from scenes import GerenciadorCenas
+from gerenciadorCenas import GerenciadorCenas
 
 
 #INICIAR PYGAME

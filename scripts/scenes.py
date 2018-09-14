@@ -2,8 +2,6 @@ import pygame
 from gameObject import GameObject
 from tela import tela
 
-import scenesModel
-
 
 class Cena:
     def __init__(self, model):
@@ -42,21 +40,3 @@ class Cena:
                 "terminou": False
             }
 
-class GerenciadorCenas:
-    def __init__(self):
-        print("Iniciar gerenciador de cenas")
-        self.cenaAtual = {}
-        self.cenas = {
-            "menuPrincipal": Cena(scenesModel.menuPrincipal),
-            "faseUm":Cena(scenesModel.menuPrincipal)
-        }
-    def iniciar(self):
-        self.cenaAtual = self.cenas["menuPrincipal"]
-        self.cenaAtual.start()
-    def atualizar(self):
-        retorno = self.cenaAtual.update()
-        if retorno["terminou"]:
-            self.cenaAtual = self.cenas[retorno["proximaCena"]]
-            self.cenaAtual.start()
-
-    
