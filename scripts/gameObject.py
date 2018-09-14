@@ -7,17 +7,18 @@ class GameObject:
         
         self.pos = model["pos"]
         self.vel = [0,0]
+        self.camada = model["camada"]
         self.corPadrao = [0,0,0]
         self.corSelecionado = [255,0,0]
         self.selecionado = False
         self.nome = model["nome"]
         self.tipo = model["tipo"]
-        if self.tipo == "botão":
+        if self.tipo == "botão" or self.tipo == "texto":
             self.id = model["id"]
             self.texto = model["texto"]
         self.interact = False
     def draw(self):
-        if self.tipo == "botão":
+        if self.tipo == "botão" or self.tipo == "texto":
             myfont = pygame.font.SysFont('Arial', 30)
             if self.selecionado:
                 font = myfont.render(self.texto, False, self.corSelecionado)

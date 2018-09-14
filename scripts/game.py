@@ -50,7 +50,8 @@ char = {
 charModel = {
     "nome": "char",
     "pos": [100,100],
-    "tipo": "char"
+    "tipo": "char",
+    "camada": ""
 }
 
 char = GameObject(charModel)

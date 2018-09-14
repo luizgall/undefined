@@ -7,6 +7,9 @@ class Scene:
     def __init__(self, model):
         self.nome = model["nome"]
         self.objetosModel = model["objetos"]
+        self.modos = model["modos"]
+        self.modo = self.modos[model["modoInicial"]]
+        self.modoAtual = self.modos[model["modoInicial"]]
         self.objetos = []
         self.iniciarCena = model["start"]
         self.atualizarCena = model["update"]
@@ -19,6 +22,7 @@ class Scene:
         self.iniciarCena(self.objetos)
     def update(self):
         for obj in self.objetos:
-            obj.draw()
-        self.atualizarCena(self.objetos)
+            if obj.camada == self.modo:
+                obj.draw()
+        self.atualizarCena(self.objetos, self)
     
