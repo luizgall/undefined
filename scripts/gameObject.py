@@ -1,5 +1,7 @@
 import pygame
 import random
+from tela import tela
+
 class GameObject:
     def __init__(self, model):
         
@@ -14,7 +16,7 @@ class GameObject:
             self.id = model["id"]
             self.texto = model["texto"]
         self.interact = False
-    def draw(self, tela):
+    def draw(self):
         if self.tipo == "botão":
             myfont = pygame.font.SysFont('Arial', 30)
             if self.selecionado:

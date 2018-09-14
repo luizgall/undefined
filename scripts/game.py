@@ -6,13 +6,13 @@ from gameObject import GameObject
 from scenes import Scene
 import scenesModel
 import random
+from tela import tela
 
 physics = Physics()
 BLACK = (0,0,0)
 #INICIAR PYGAME
 pygame.init()
 pygame.font.init()
-tela = pygame.display.set_mode((600,400))
 clock = pygame.time.Clock()
 
 MAP = []
@@ -104,6 +104,6 @@ while True:
     # for i in range(len(MAP)):
     #     pygame.draw.rect(tela, BLACK, (MAP[i][0],MAP[i][1],20,20))    
     # char.draw(tela)
-    menu.update(tela)
+    menu.update()
     pygame.display.flip()
     clock.tick(60)

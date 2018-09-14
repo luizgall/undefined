@@ -1,5 +1,7 @@
 import pygame
 from gameObject import GameObject
+from tela import tela
+
 
 class Scene:
     def __init__(self, model):
@@ -13,9 +15,9 @@ class Scene:
         for obj in self.objetosModel:
             novoObjeto = GameObject(obj)
             self.objetos.append(novoObjeto)
-    def update(self, tela):
+    def update(self):
         for obj in self.objetos:
             print(obj.tipo)
-            obj.draw(tela)
-        self.atualizarCena(tela, self.objetos)
+            obj.draw()
+        self.atualizarCena(self.objetos)
     

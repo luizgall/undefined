@@ -1,9 +1,11 @@
 import pygame
 from gameObject import GameObject
+from tela import tela
+
 def menuPrincipalStart():
     print("oi")
 
-def menuPrincipalUpdate(tela , objetos):
+def menuPrincipalUpdate(objetos):
     objetos[0].selecionado = True
     # myfont = pygame.font.SysFont('Arial', 30)
     # font = myfont.render('- undefined -', False, (0, 0, 0))
