@@ -58,32 +58,32 @@ char = GameObject(charModel)
 #GAME LOOP
 while True:
     #detectar eventos
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE:
-                char.interact = True
-            else:
-                char.interact = False                     
-            if event.key == pygame.K_LEFT:
-                char.vel[0] = -20
-            elif event.key == pygame.K_RIGHT:
-                char.vel[0] = 20
-            elif event.key == pygame.K_UP:
-                char.vel[1] = -20
-            elif event.key == pygame.K_DOWN:
-                char.vel[1] = 20
-        if event.type == pygame.KEYUP:
-            if event.key == pygame.K_LEFT:
-                char.vel[0] = 0
-            elif event.key == pygame.K_RIGHT:
-                char.vel[0] = 0
-            elif event.key == pygame.K_UP:
-                char.vel[1] = 0
-            elif event.key == pygame.K_DOWN:
-                char.vel[1] = 0
+    # for event in pygame.event.get():
+    #     if event.type == pygame.QUIT:
+    #         pygame.quit()
+    #         sys.exit()
+    #     if event.type == pygame.KEYDOWN:
+    #         if event.key == pygame.K_SPACE:
+    #             char.interact = True
+    #         else:
+    #             char.interact = False                     
+    #         if event.key == pygame.K_LEFT:
+    #             char.vel[0] = -20
+    #         elif event.key == pygame.K_RIGHT:
+    #             char.vel[0] = 20
+    #         elif event.key == pygame.K_UP:
+    #             char.vel[1] = -20
+    #         elif event.key == pygame.K_DOWN:
+    #             char.vel[1] = 20
+    #     if event.type == pygame.KEYUP:
+    #         if event.key == pygame.K_LEFT:
+    #             char.vel[0] = 0
+    #         elif event.key == pygame.K_RIGHT:
+    #             char.vel[0] = 0
+    #         elif event.key == pygame.K_UP:
+    #             char.vel[1] = 0
+    #         elif event.key == pygame.K_DOWN:
+    #             char.vel[1] = 0
     for i in range(len(MAP)):
         collision = physics.detectCollision(char,MAP[i])
         if(collision['type'] == 'top'):

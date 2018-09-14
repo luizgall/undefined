@@ -1,12 +1,44 @@
 import pygame
+import sys
 from gameObject import GameObject
 from tela import tela
+from eventos import GerenciadorEventos
 
-def menuPrincipalStart():
-    print("oi")
+def menuPrincipalStart(objetos):
+    objetos[0].selecionado = True
 
 def menuPrincipalUpdate(objetos):
-    objetos[0].selecionado = True
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+
+        if event.type == pygame.KEYDOWN:
+            # if event.key == pygame.K_UP:
+            if event.key == pygame.K_DOWN:
+                if objetos[0].selecionado:
+                    objetos[0].selecionado = False
+                    objetos[1].selecionado = True
+                elif objetos[1].selecionado:
+                    objetos[1].selecionado = False
+                    objetos[2].selecionado = True
+                elif objetos[2].selecionado:
+                    objetos[2].selecionado = False
+                    objetos[0].selecionado = True
+            if event.key == pygame.K_UP:
+                if objetos[0].selecionado:
+                    objetos[0].selecionado = False
+                    objetos[2].selecionado = True
+                elif objetos[1].selecionado:
+                    objetos[1].selecionado = False
+                    objetos[0].selecionado = True
+                elif objetos[2].selecionado:
+                    objetos[2].selecionado = False
+                    objetos[1].selecionado = True
+
+            if event.key == pygame.K_RETURN:
+                print("ENTER")
+            
     # myfont = pygame.font.SysFont('Arial', 30)
     # font = myfont.render('- undefined -', False, (0, 0, 0))
     # tela.blit(font,(0,0))
@@ -51,3 +83,4 @@ menuPrincipal = {
         
     ]
 }
+

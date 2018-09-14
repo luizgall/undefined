@@ -8,6 +8,7 @@ class Scene:
         self.nome = model["nome"]
         self.objetosModel = model["objetos"]
         self.objetos = []
+        self.iniciarCena = model["start"]
         self.atualizarCena = model["update"]
     def start(self):
         print("Start scene ", self.nome)
@@ -15,9 +16,9 @@ class Scene:
         for obj in self.objetosModel:
             novoObjeto = GameObject(obj)
             self.objetos.append(novoObjeto)
+        self.iniciarCena(self.objetos)
     def update(self):
         for obj in self.objetos:
-            print(obj.tipo)
             obj.draw()
         self.atualizarCena(self.objetos)
     
