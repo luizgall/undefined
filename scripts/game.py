@@ -3,17 +3,23 @@ import pygame
 import sys
 from physics import Physics
 from gameObject import GameObject
+from scenes import Scene
+import scenesModel
 import random
 
 physics = Physics()
 BLACK = (0,0,0)
 #INICIAR PYGAME
 pygame.init()
+pygame.font.init()
 tela = pygame.display.set_mode((600,400))
 clock = pygame.time.Clock()
 
 MAP = []
 i = 0
+
+menu = Scene(scenesModel.menuPrincipal)
+menu.start()
 
 def rangeIntersect(min0, max0, min1, max1):
         return max(min0,max0)>= min(min1,max1) and min(min0,max0)<=max(min1,max1);
@@ -30,19 +36,24 @@ def drawLine(obj, a,b,x,y):
         elif (b > y and b != y):
             b -= 20
             
-drawLine(MAP, 40, 20, 40, 360)
-drawLine(MAP, 560, 20, 560, 360)
-drawLine(MAP, 40, 20, 580, 20)
-drawLine(MAP, 40, 360, 580, 360)
+# drawLine(MAP, 40, 20, 40, 360)
+# drawLine(MAP, 560, 20, 560, 360)
+# drawLine(MAP, 40, 20, 580, 20)
+# drawLine(MAP, 40, 360, 580, 360)
 
-# char = {
-#     "x":100,
-#     "y":100,
-#     "velY":0,
-#     "velX":0
-# }
+char = {
+    "x":100,
+    "y":100,
+    "velY":0,
+    "velX":0
+}
+charModel = {
+    "nome": "char",
+    "pos": [100,100],
+    "tipo": "char"
+}
 
-char = GameObject("char", [100,100])
+char = GameObject(charModel)
 
 #GAME LOOP
 while True:
@@ -89,8 +100,10 @@ while True:
     
     #renderizar 
     tela.fill((255,255,255))
-    for i in range(len(MAP)):
-        pygame.draw.rect(tela, BLACK, (MAP[i][0],MAP[i][1],20,20))    
-    char.draw(tela)
+    # menu.update(tela)
+    # for i in range(len(MAP)):
+    #     pygame.draw.rect(tela, BLACK, (MAP[i][0],MAP[i][1],20,20))    
+    # char.draw(tela)
+    menu.update(tela)
     pygame.display.flip()
     clock.tick(60)
