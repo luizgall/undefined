@@ -1,9 +1,9 @@
 import pygame
 
-def menuPrincipalStart(objetos):
+def fase1Start(objetos):
         objetos[1].selecionado = True
 
-def menuPrincipalUpdate(objetos, cena):
+def fase1Update(objetos, cena):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -44,7 +44,7 @@ def menuPrincipalUpdate(objetos, cena):
                         if objetos[1].selecionado:
                             cena.modo = "JOGO"
                             cena.terminou = True
-                            cena.proximaCena = "fase1"
+                            cena.proximaCena = "faseUm"
                         elif objetos[2].selecionado:
                             cena.modo = "INSTRUCOES"
                         elif objetos[3].selecionado:
@@ -65,12 +65,12 @@ def menuPrincipalUpdate(objetos, cena):
         # tela.blit(font,(0,150))
         # font = myfont.render('sair', False, (0, 0, 0))
         # tela.blit(font,(0,200))
-menuPrincipal = {
+fase1 = {
         "nome": "Menu Principal",
         "modos": ["PRINCIPAL", "JOGO", "SAIR"],
         "modoInicial": 0,
-        "start": menuPrincipalStart,
-        "update": menuPrincipalUpdate,
+        "start": fase1Start,
+        "update": fase1Update,
         "objetos": [
             {
                 "tipo": "texto",
