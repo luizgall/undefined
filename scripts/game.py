@@ -3,7 +3,7 @@ import pygame
 import sys
 from physics import Physics
 from gameObject import GameObject
-from scenes import Scene
+from scenes import Cena
 import scenesModel
 import random
 from tela import tela
@@ -18,7 +18,7 @@ clock = pygame.time.Clock()
 MAP = []
 i = 0
 
-menu = Scene(scenesModel.menuPrincipal)
+menu = Cena(scenesModel.menuPrincipal)
 menu.start()
 
 def rangeIntersect(min0, max0, min1, max1):
