@@ -17,6 +17,9 @@ class GameObject:
             self.id = model["id"]
             self.texto = model["texto"]
         self.interact = False
+        if self.tipo == "plataforma":
+            self.largura = model["largura"]
+            self.altura = model["altura"]
     def draw(self):
         if self.tipo == "botão" or self.tipo == "texto":
             myfont = pygame.font.SysFont('Arial', 30)
@@ -26,7 +29,7 @@ class GameObject:
                 font = myfont.render(self.texto, False, self.corPadrao)    
             tela.blit(font,(self.pos[0],self.pos[1]))
         else:        
-            pygame.draw.rect(tela, self.corAtual, (self.pos[0],self.pos[1],20,20))
+            pygame.draw.rect(tela, self.corPadrao, (self.pos[0],self.pos[1], self.largura, self.altura))
     def touch(self, target):
         if self.interact:
             self.interact = False

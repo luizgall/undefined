@@ -32,5 +32,5 @@ def scenesFactory():
 
     return {
         "menuPrincipal": Cena(menuPrincipal),
-        "fase1": Cena(menuPrincipal)
+        "fase1": Cena(fase1)
     }

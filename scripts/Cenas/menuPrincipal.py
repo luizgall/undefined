@@ -1,4 +1,5 @@
 import pygame
+import sys
 
 def menuPrincipalStart(objetos):
         objetos[1].selecionado = True
@@ -50,7 +51,8 @@ def menuPrincipalUpdate(objetos, cena):
                         elif objetos[3].selecionado:
                             cena.modo = "CREDITOS"
                         elif objetos[4].selecionado:
-                            cena.modo = "SAIR"
+                            pygame.quit()
+                            sys.exit()
                 if event.key == pygame.K_ESCAPE:
                     cena.modo = "PRINCIPAL"
 
