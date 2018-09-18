@@ -17,8 +17,8 @@ def fase1Update(objetos, cena):
         obstaculo = GameObject(obsModel)
         cena.objetos.append(obstaculo)
     
-    if len(cena.objetos) < 4:
-        criarObstaculo()
+    # if len(cena.objetos) < 4:
+    #     criarObstaculo()
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -51,9 +51,10 @@ def fase1Update(objetos, cena):
             cena.jogador.vel[0] = 0
         
         if teclas_pressionadas[pygame.K_UP]:
-            cena.jogador.ace = [0,-10]
-            print("JUMP", cena.jogador.ace)
-
+            if not (cena.jogador.caindo):
+                cena.jogador.vel[1] -= 20
+                cena.jogador.caindo = True
+            
 fase1 = {
     "nome": "Fase 1",
     "modos": ["fase1", "JOGO", "SAIR"],
@@ -66,7 +67,7 @@ fase1 = {
              "camada": "fase1",
              "nome": "plataforma",      
              "pos": [0, 380], 
-             "altura": 20,
+             "altura": 50,
              "largura": 1000
         },
 
@@ -74,7 +75,7 @@ fase1 = {
              "tipo": "player", 
              "camada": "fase1",
              "nome": "Jogador",      
-             "pos": [50, 120],
+             "pos": [50, 70],
              "altura": 60,
              "largura": 30
         }
