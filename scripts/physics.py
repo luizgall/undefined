@@ -1,5 +1,5 @@
 class Physics:
-    def detectCollision(self, obj, MAP):
+    def detectarColisao(self, obj, MAP):
         if (obj.pos[0]+20,obj.pos[1]) == MAP:
                 obj.touch(MAP)
                 return {
@@ -23,6 +23,22 @@ class Physics:
         return {
                 "type": "false"
             }
+        
+    def atualizar(self, objetos):
+        for obj in objetos:
+        #aplicar gravidade
+            if obj.pos[1] < 220 - obj.altura:
+                obj.ace[1] += 1*obj.peso
+            else:
+                obj.ace[1] = 0
+                if (obj.tipo == "player"):
+                    obj.pos[1] = 300
+            obj.vel[0] += obj.ace[0]
+            obj.vel[1] += obj.ace[1]
+                
+            obj.pos[0] += obj.vel[0]
+            obj.pos[1] += obj.vel[1]
+            
 
 
 
