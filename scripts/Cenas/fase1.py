@@ -44,6 +44,7 @@ def fase1Update(objetos, cena):
         
         teclas_pressionadas = pygame.key.get_pressed()
         if teclas_pressionadas[pygame.K_LEFT]:
+            print(cena.jogador.vel)
             cena.jogador.vel[0] = -10
         elif teclas_pressionadas[pygame.K_RIGHT]:
             cena.jogador.vel[0] = 10
@@ -93,6 +94,7 @@ def fase1Update(objetos, cena):
             elif(cena.modo == "PAUSE" and objetos[3].selecionado):
                 cena.modo = "fase1"                
                 cena.terminou = True
+                cena.jogador.pos = [0,0]
                 cena.proximaCena = "fase1"
             elif(cena.modo == "PAUSE" and objetos[4].selecionado):
                 cena.modo = "fase1"                
@@ -149,6 +151,15 @@ fase1 = {
                 "id": "1",
                 "texto": "Sair",
                 "camada": "PAUSE"
+        },
+
+        {
+             "tipo": "plataforma", 
+             "camada": "fase1",
+             "nome": "plataforma",      
+             "pos": [200, 280], 
+             "altura": 100,
+             "largura": 100
         }
     ]
 }

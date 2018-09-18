@@ -26,6 +26,7 @@ class Cena:
             novoObjeto = GameObject(obj)
             if obj["tipo"] == "player":
                 self.jogador = novoObjeto
+                self.jogador.pos = obj["pos"]
                 self.camera.definirFoco(self.jogador.pos)
             self.objetos.append(novoObjeto)
         self.iniciarCena(self.objetos, self)

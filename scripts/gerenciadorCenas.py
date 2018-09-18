@@ -10,7 +10,10 @@ class GerenciadorCenas:
         self.cenaAtual.start()
     def atualizar(self):
         retorno = self.cenaAtual.update()
+        
         if retorno["terminou"]:
+            if self.cenaAtual.jogador != "":
+                del self.cenaAtual.jogador
             del self.cenaAtual
             del self.cenas
             self.cenas = scenesModel.scenesFactory()

@@ -9,6 +9,7 @@ class GameObject:
         self.vel = [0,0]
         self.ace = [0,0]
         self.altura = 0
+        self.largura = 0
         self.caindo = False
         self.camada = model["camada"]
         self.corPadrao = [0,0,0]
