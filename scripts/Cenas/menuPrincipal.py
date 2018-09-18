@@ -1,7 +1,7 @@
 import pygame
 import sys
 
-def menuPrincipalStart(objetos):
+def menuPrincipalStart(objetos, cena):
         objetos[1].selecionado = True
 
 def menuPrincipalUpdate(objetos, cena):
@@ -79,7 +79,7 @@ menuPrincipal = {
                 "nome": "botao",
                 "pos": [100, 100],
                 "id": "1",
-                "texto": "undefined",
+                "texto": "Fora d'água",
                 "camada": "PRINCIPAL"
             },
             {

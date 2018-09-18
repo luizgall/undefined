@@ -2,7 +2,7 @@ import pygame
 from gameObject import GameObject
 from tela import tela
 from physics import Physics
-
+from camera import Camera
 
 class Cena:
     def __init__(self, model):
@@ -18,6 +18,7 @@ class Cena:
         self.atualizarCena = model["update"]
         self.jogador = ""
         self.fisica = Physics()
+        self.camera = Camera()
     def start(self):
         print("Start Cena ", self.nome)
         ## criar objetos
@@ -25,17 +26,13 @@ class Cena:
             novoObjeto = GameObject(obj)
             if obj["tipo"] == "player":
                 self.jogador = novoObjeto
+                self.camera.definirFoco(self.jogador.pos)
             self.objetos.append(novoObjeto)
-        self.iniciarCena(self.objetos)
+        self.iniciarCena(self.objetos, self)
     def update(self):
         self.atualizarCena(self.objetos, self)
         self.fisica.atualizar(self.objetos)
-        tela.fill((255,255,255))
-        for obj in self.objetos:
-            if obj.camada == self.modo:
-                obj.draw()
-
-        pygame.display.flip()    
+        self.camera.draw(self.objetos, self.modo)
         if self.terminou:
             return {
                 "proximaCena": self.proximaCena,

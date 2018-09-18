@@ -10,8 +10,8 @@ obsModel = {
              "altura": 20,
              "largura": 20
         }
-def fase1Start(objetos):
-    pass
+def fase1Start(objetos, cena):
+    cena.camera.definirFoco(cena.jogador.pos)
 def fase1Update(objetos, cena):
     def criarObstaculo():
         obstaculo = GameObject(obsModel)
@@ -51,13 +51,60 @@ def fase1Update(objetos, cena):
             cena.jogador.vel[0] = 0
         
         if teclas_pressionadas[pygame.K_UP]:
-            if not (cena.jogador.caindo):
-                cena.jogador.vel[1] -= 20
+            if(cena.modo == "PAUSE"):
+                if objetos[2].selecionado:
+                    objetos[2].selecionado = False
+                    objetos[4].selecionado = True
+                elif objetos[3].selecionado:
+                    objetos[3].selecionado = False
+                    objetos[2].selecionado = True
+                elif objetos[4].selecionado:
+                    objetos[4].selecionado = False
+                    objetos[3].selecionado = True                    
+            elif not (cena.jogador.caindo):
+                cena.jogador.vel[1] -= 15
                 cena.jogador.caindo = True
+
+        if teclas_pressionadas[pygame.K_DOWN]:
+            if(cena.modo == "PAUSE"):
+                if objetos[2].selecionado:
+                    objetos[2].selecionado = False
+                    objetos[3].selecionado = True
+                elif objetos[3].selecionado:
+                    objetos[3].selecionado = False
+                    objetos[4].selecionado = True
+                elif objetos[4].selecionado:
+                    objetos[4].selecionado = False
+                    objetos[2].selecionado = True  
+
+        if teclas_pressionadas[pygame.K_ESCAPE]:
+            if(cena.modo == "PAUSE"):
+                cena.camera.definirFoco(cena.jogador.pos)                
+                cena.modo = "fase1"
+            else:    
+                objetos[2].selecionado = True            
+                cena.modo = "PAUSE"
+                cena.camera.definirFoco([0,0])
+        
+        if teclas_pressionadas[pygame.K_RETURN]:
+            if(cena.modo == "PAUSE" and objetos[2].selecionado):
+                cena.camera.definirFoco(cena.jogador.pos)                
+                cena.modo = "fase1"
+            elif(cena.modo == "PAUSE" and objetos[3].selecionado):
+                cena.modo = "fase1"                
+                cena.terminou = True
+                cena.proximaCena = "fase1"
+            elif(cena.modo == "PAUSE" and objetos[4].selecionado):
+                cena.modo = "fase1"                
+                cena.terminou = True
+                cena.proximaCena = "menuPrincipal"
+
+        
+            
             
 fase1 = {
     "nome": "Fase 1",
-    "modos": ["fase1", "JOGO", "SAIR"],
+    "modos": ["fase1", "PAUSE", "SAIR"],
     "modoInicial": 0,
     "start": fase1Start,
     "update": fase1Update,
@@ -78,6 +125,30 @@ fase1 = {
              "pos": [50, 70],
              "altura": 60,
              "largura": 30
+        },
+        {
+                "tipo": "botão",
+                "nome": "Continuar",
+                "pos": [250, 180],
+                "id": "1",
+                "texto": "Continuar",
+                "camada": "PAUSE"
+        },
+        {
+                "tipo": "botão",
+                "nome": "Continuar",
+                "pos": [250, 230],
+                "id": "1",
+                "texto": "Recomeçar",
+                "camada": "PAUSE"
+        },
+        {
+                "tipo": "botão",
+                "nome": "Continuar",
+                "pos": [250, 280],
+                "id": "1",
+                "texto": "Sair",
+                "camada": "PAUSE"
         }
     ]
 }

@@ -11,6 +11,9 @@ class GerenciadorCenas:
     def atualizar(self):
         retorno = self.cenaAtual.update()
         if retorno["terminou"]:
+            del self.cenaAtual
+            del self.cenas
+            self.cenas = scenesModel.scenesFactory()
             self.cenaAtual = self.cenas[retorno["proximaCena"]]
             self.cenaAtual.start()
 
