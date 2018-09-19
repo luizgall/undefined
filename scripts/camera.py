@@ -7,13 +7,15 @@ class Camera:
         self.foco = {}
     
     def draw(self, objetos, modo):
-        tela.fill((255,255,255))
         for obj in objetos:
             if obj.camada == modo:
                 obj.draw(self.pos)
 
         pygame.display.flip() 
-    
+
+    def drawBG(self, objeto):
+        objeto.draw(self.pos)
+
     def definirFoco(self, objetoPos):
         self.foco = objetoPos
         self.pos = objetoPos

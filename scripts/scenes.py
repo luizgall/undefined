@@ -17,6 +17,7 @@ class Cena:
         self.iniciarCena = model["start"]
         self.atualizarCena = model["update"]
         self.jogador = ""
+        self.bg = ""
         self.fisica = Physics()
         self.camera = Camera()
     def start(self):
@@ -28,11 +29,17 @@ class Cena:
                 self.jogador = novoObjeto
                 self.jogador.pos = obj["pos"]
                 self.camera.definirFoco(self.jogador.pos)
-            self.objetos.append(novoObjeto)
+            
+            if obj["tipo"] == "imagem": 
+                self.bg = novoObjeto
+            else:
+                self.objetos.append(novoObjeto)
         self.iniciarCena(self.objetos, self)
     def update(self):
         self.atualizarCena(self.objetos, self)
         self.fisica.atualizar(self.objetos)
+        if self.bg != "":
+            self.camera.drawBG(self.bg)
         self.camera.draw(self.objetos, self.modo)
         if self.terminou:
             return {

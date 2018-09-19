@@ -77,7 +77,7 @@ menuPrincipal = {
             {
                 "tipo": "texto",
                 "nome": "botao",
-                "pos": [100, 100],
+                "pos": [210, 100],
                 "id": "1",
                 "texto": "Fora d'água",
                 "camada": "PRINCIPAL"
@@ -85,7 +85,7 @@ menuPrincipal = {
             {
                 "tipo": "botão",
                 "nome": "botao",
-                "pos": [100, 180],
+                "pos": [250, 180],
                 "id": "1",
                 "texto": "começar",
                 "camada": "PRINCIPAL"
@@ -93,7 +93,7 @@ menuPrincipal = {
             {
                 "tipo": "botão",
                 "nome": "botao",
-                "pos": [100, 230],
+                "pos": [240, 230],
                 "id": "1",
                 "texto": "instruções",
                 "camada": "PRINCIPAL"
@@ -101,7 +101,7 @@ menuPrincipal = {
             {
                 "tipo": "botão",
                 "nome": "botao",
-                "pos": [100, 280],
+                "pos": [250, 280],
                 "id": "1",
                 "texto": "créditos",
                 "camada": "PRINCIPAL"
@@ -110,7 +110,7 @@ menuPrincipal = {
             {
                 "tipo": "botão",
                 "nome": "botao",
-                "pos": [100, 330],
+                "pos": [270, 330],
                 "id": "1",
                 "texto": "sair",
                 "camada": "PRINCIPAL"
@@ -180,6 +180,15 @@ menuPrincipal = {
                 "id": "1",
                 "texto": "Saindo do jogo",
                 "camada": "SAIR"
+            },
+
+            {
+                "tipo": "imagem",
+                "nome": "botao",
+                "pos": [400, 300],
+                "id": "1",
+                "texto": "background",
+                "camada": "PRINCIPAL"
             }
 
         ]
