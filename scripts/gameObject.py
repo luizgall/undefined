@@ -14,7 +14,7 @@ class GameObject:
         self.largura = 0
         self.caindo = False
         self.camada = model["camada"]
-        self.corPadrao = [255,255,255]
+        self.corPadrao = [0,0,0]
         self.corSelecionado = [0,255,0]
         self.selecionado = False
         self.nome = model["nome"]
@@ -30,14 +30,13 @@ class GameObject:
         if self.tipo == "player":
             self.peso = 1
             self.corPadrao = [255, 0, 0]
-        if self.tipo == "imagem":
-            self.img = pygame.image.load("../assets/Img/menuBg.jpg")
-            self.img = pygame.transform.scale(self.img, (400, 600))
-            self.img = pygame.transform.rotate(self.img, 90)
+        if self.tipo == "logo":
+            self.img = pygame.image.load("../assets/Img/logo.png")
+            self.img = pygame.transform.scale(self.img, (300, 300))
             
     def draw(self, cameraPos):
         if self.tipo == "botão":
-            myfont = pygame.font.SysFont('Arial', 30)
+            myfont = pygame.font.Font('../assets/fonts/Kalam-Bold.ttf', 30)
             if self.selecionado:
                 font = myfont.render(self.texto, False, self.corSelecionado)
             else:
@@ -52,6 +51,8 @@ class GameObject:
             tela.blit(font,(self.pos[0] - cameraPos[0],self.pos[1] - cameraPos[1]))
         elif self.tipo == "imagem":
             tela.blit(self.img, (0,0))
+        elif self.tipo == "logo":
+            tela.blit(self.img, (self.pos[0], self.pos[1]))
         else:        
             pygame.draw.rect(tela, self.corPadrao, (self.pos[0] - cameraPos[0]+300,self.pos[1] - cameraPos[1]+250, self.largura, self.altura))
     def touch(self, target):

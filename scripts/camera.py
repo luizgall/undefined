@@ -14,7 +14,7 @@ class Camera:
         pygame.display.flip() 
 
     def drawBG(self, objeto):
-        objeto.draw(self.pos)
+        objeto.play()
 
     def definirFoco(self, objetoPos):
         self.foco = objetoPos

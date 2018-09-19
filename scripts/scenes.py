@@ -3,6 +3,7 @@ from gameObject import GameObject
 from tela import tela
 from physics import Physics
 from camera import Camera
+from animacao import Animacao
 
 class Cena:
     def __init__(self, model):
@@ -24,15 +25,14 @@ class Cena:
         print("Start Cena ", self.nome)
         ## criar objetos
         for obj in self.objetosModel:
-            novoObjeto = GameObject(obj)
-            if obj["tipo"] == "player":
-                self.jogador = novoObjeto
-                self.jogador.pos = obj["pos"]
-                self.camera.definirFoco(self.jogador.pos)
-            
-            if obj["tipo"] == "imagem": 
-                self.bg = novoObjeto
+            if obj["tipo"] == "animacao": 
+                self.bg = Animacao(obj)
             else:
+                novoObjeto = GameObject(obj)
+                if obj["tipo"] == "player":
+                    self.jogador = novoObjeto
+                    self.jogador.pos = obj["pos"]
+                    self.camera.definirFoco(self.jogador.pos)
                 self.objetos.append(novoObjeto)
         self.iniciarCena(self.objetos, self)
     def update(self):
