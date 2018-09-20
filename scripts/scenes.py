@@ -21,12 +21,12 @@ class Cena:
         self.bg = ""
         self.fisica = Physics()
         self.camera = Camera()
-    def start(self):
+    def start(self, assetLoader):
         print("Start Cena ", self.nome)
         ## criar objetos
         for obj in self.objetosModel:
             if obj["tipo"] == "animacao": 
-                self.bg = Animacao(obj)
+                self.bg = Animacao(obj, assetLoader)
             else:
                 novoObjeto = GameObject(obj)
                 if obj["tipo"] == "player":

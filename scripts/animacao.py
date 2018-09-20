@@ -1,22 +1,23 @@
 from tela import tela
 import pygame
 class Animacao():
-    def __init__(self, model):
+    def __init__(self, model, assetLoader):
         self.frames = []
         self.vel = 10
+        self.pos = [0,0]
         self.frameAtual = 0
         self.loop = True
         self.terminou = False
         self.count = 0
 
         for frames in model["frames"]:
-            quadro = pygame.image.load(frames)
+            quadro = assetLoader.procurarImagem(frames)
             quadro = pygame.transform.scale(quadro, (400, 600))
             quadro = pygame.transform.rotate(quadro, 90)
             self.frames.append(quadro)
     
     def play(self):
-        tela.blit(self.frames[self.frameAtual], (0,0))
+        tela.blit(self.frames[self.frameAtual], self.pos)
         if self.count <= self.vel:
             self.count += 1
         else:

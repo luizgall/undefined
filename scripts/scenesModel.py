@@ -10,26 +10,6 @@ from Cenas import *
 
 def scenesFactory():
 
-    # fase1 = {
-    #     "nome": "Primeira Fase",
-    #     "modos": ["PRINCIPAL", "JOGO", "SAIR"],
-    #     "modoInicial": 0,
-    #     "start": menuPrincipalStart,
-    #     "update": menuPrincipalUpdate,
-    #     "objetos": [
-
-    #         {
-    #             "tipo": "texto",
-    #             "nome": "botao",
-    #             "pos": [400, 300],
-    #             "id": "1",
-    #             "texto": "Iniciando jogo",
-    #             "camada": "JOGO"
-    #         }
-
-    #     ]
-    # }
-
     return {
         "menuPrincipal": Cena(menuPrincipal),
         "fase1": Cena(fase1)

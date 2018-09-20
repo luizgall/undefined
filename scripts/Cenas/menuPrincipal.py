@@ -177,7 +177,7 @@ menuPrincipal = {
                 "camada": "CREDITOS"
             },
 
-        {
+            {
                 "tipo": "texto",
                 "nome": "botao",
                 "pos": [400, 300],
@@ -192,16 +192,16 @@ menuPrincipal = {
                 "texto": "background",
                 "camada": "PRINCIPAL",
                 "frames": [
-                    "../assets/Img/menuBg1.jpg",
-                    "../assets/Img/menuBg2.jpg",
-                    "../assets/Img/menuBg3.jpg",
-                    "../assets/Img/menuBg4.jpg",
-                    "../assets/Img/menuBg5.jpg",
-                    "../assets/Img/menuBg6.jpg",
-                    "../assets/Img/menuBg5.jpg",
-                    "../assets/Img/menuBg4.jpg",
-                    "../assets/Img/menuBg3.jpg",
-                    "../assets/Img/menuBg2.jpg",
+                    "menuBg1.jpg",
+                    "menuBg2.jpg",
+                    "menuBg3.jpg",
+                    "menuBg4.jpg",
+                    "menuBg5.jpg",
+                    "menuBg6.jpg",
+                    "menuBg5.jpg",
+                    "menuBg4.jpg",
+                    "menuBg3.jpg",
+                    "menuBg2.jpg",
                     
                     
                 ]
