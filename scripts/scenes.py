@@ -4,6 +4,7 @@ from tela import tela
 from physics import Physics
 from camera import Camera
 from animacao import Animacao
+from assetLoader import assetLoader
 
 class Cena:
     def __init__(self, model):
@@ -21,12 +22,12 @@ class Cena:
         self.bg = ""
         self.fisica = Physics()
         self.camera = Camera()
-    def start(self, assetLoader):
+    def start(self):
         print("Start Cena ", self.nome)
         ## criar objetos
         for obj in self.objetosModel:
             if obj["tipo"] == "animacao": 
-                self.bg = Animacao(obj, assetLoader)
+                self.bg = Animacao(obj)
             else:
                 novoObjeto = GameObject(obj)
                 if obj["tipo"] == "player":

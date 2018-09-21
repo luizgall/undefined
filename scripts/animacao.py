@@ -1,7 +1,8 @@
 from tela import tela
 import pygame
+from assetLoader import assetLoader
 class Animacao():
-    def __init__(self, model, assetLoader):
+    def __init__(self, model):
         self.frames = []
         self.vel = 10
         self.pos = [0,0]
@@ -11,7 +12,7 @@ class Animacao():
         self.count = 0
 
         for frames in model["frames"]:
-            quadro = assetLoader.procurarImagem(frames)
+            quadro = assetLoader.procurar(frames, "imagem")
             quadro = pygame.transform.scale(quadro, (400, 600))
             quadro = pygame.transform.rotate(quadro, 90)
             self.frames.append(quadro)

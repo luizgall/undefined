@@ -3,7 +3,7 @@ import pygame
 import sys
 import _thread
 from gerenciadorCenas import GerenciadorCenas
-from assetLoader import AssetLoader
+from assetLoader import assetLoader
 from tela import tela
 import scenesModel
 
@@ -13,7 +13,6 @@ pygame.font.init()
 clock = pygame.time.Clock()
 
 cenas = scenesModel.scenesFactory()
-assetLoader = AssetLoader()
 _thread.start_new_thread(assetLoader.carregarAssets, ())
 myfont = pygame.font.Font('../assets/fonts/Kalam-Bold.ttf', 20)
 while assetLoader.status == "carregando":
@@ -27,7 +26,7 @@ while assetLoader.status == "carregando":
     pygame.display.flip() 
 
 tela.fill((0,0,0))
-gerenciadorCenas = GerenciadorCenas(cenas, assetLoader)
+gerenciadorCenas = GerenciadorCenas(cenas)
 gerenciadorCenas.iniciar()
 
 #GAME LOOP

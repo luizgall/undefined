@@ -1,16 +1,16 @@
 import scenesModel
 from animacao import Animacao
+from assetLoader import assetLoader
 
 class GerenciadorCenas:
-    def __init__(self, cenas, assetLoader):
+    def __init__(self, cenas):
         print("Iniciar gerenciador de cenas")
         self.cenaAtual = {}
         self.cenas = cenas
-        self.assetLoader = assetLoader
         # self.transicao = Animacao()
     def iniciar(self):
         self.cenaAtual = self.cenas["menuPrincipal"]
-        self.cenaAtual.start(self.assetLoader)
+        self.cenaAtual.start()
     def atualizar(self):
         retorno = self.cenaAtual.update()
         

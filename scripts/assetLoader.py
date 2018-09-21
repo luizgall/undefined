@@ -9,6 +9,7 @@ class AssetLoader:
         self.mensagem = ""
         self.imagens = []
         self.sons = []
+        self.audios = []
         self.fontes = []
     
     def carregarAssets(self):
@@ -23,7 +24,7 @@ class AssetLoader:
         self.mensagem = ""
 
     def carregarImagens(self):
-        path = "../assets/Img/"
+        path = "../assets/img/"
         for file in listdir(path):
             if isfile(join(path, file)):
                 self.mensagem = "carregando imagem " + file
@@ -38,15 +39,31 @@ class AssetLoader:
             if isfile(join(path, file)):
                 self.mensagem = "carregando fonte " + file
                 font = {}
-                font["img"] = pygame.font.Font(join(path, file), 20)
+                font["font"] = pygame.font.Font(join(path, file), 20)
                 font["nome"] = file
                 self.fontes.append(font)
                 
     def carregarAudios(self):
+        # path = "../assets/audio/"
+        # for file in listdir(path):
+        #     if isfile(join(path, file)):
+        #         self.mensagem = "carregando fonte " + file
+        #         font = {}
+        #         font["audio"] = pygame.font.Font(join(path, file), 20)
+        #         font["nome"] = file
+        #         self.audios.append(font)
         pass
-    def procurarImagem(self, nome):
-        for img in self.imagens:
-            if img["nome"] == nome:
-                return img["img"]
-        
+    def procurar(self, nome, tipo):
+        if tipo == "imagem":    
+            for img in self.imagens:
+                if img["nome"] == nome:
+                    return img["img"]
+
+        if tipo == "fonte":    
+            for font in self.fontes:
+                if font["nome"] == nome:
+                    return font["font"]
+            
         # self.status = "next"
+
+assetLoader = AssetLoader()
