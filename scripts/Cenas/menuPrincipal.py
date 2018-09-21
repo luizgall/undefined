@@ -1,5 +1,8 @@
 import pygame
+import _thread
 import sys
+import time
+
 
 
 def menuPrincipalStart(objetos, cena):
@@ -7,18 +10,11 @@ def menuPrincipalStart(objetos, cena):
 
 
 def menuPrincipalUpdate(objetos, cena):
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
-
-        if event.type == pygame.KEYDOWN:
-            # if event.key == pygame.K_UP:
-            if event.key == pygame.K_DOWN:
+        teclas_pressionadas = pygame.key.get_pressed()
+        if teclas_pressionadas[pygame.K_DOWN]:
                 if cena.modo == "PRINCIPAL":
                     if objetos[1].selecionado:
-                        objetos[1].selecionado = False
-                        objetos[2].selecionado = True
+                        _thread.start_new_thread(selecionar, (objetos, 2))
                     elif objetos[2].selecionado:
                         objetos[2].selecionado = False
                         objetos[3].selecionado = True
@@ -28,7 +24,7 @@ def menuPrincipalUpdate(objetos, cena):
                     elif objetos[4].selecionado:
                         objetos[4].selecionado = False
                         objetos[1].selecionado = True
-            if event.key == pygame.K_UP:
+        if teclas_pressionadas[pygame.K_UP]:
                 if cena.modo == "PRINCIPAL":
                     if objetos[1].selecionado:
                         objetos[1].selecionado = False
@@ -42,7 +38,7 @@ def menuPrincipalUpdate(objetos, cena):
                     elif objetos[4].selecionado:
                         objetos[4].selecionado = False
                         objetos[3].selecionado = True
-            if event.key == pygame.K_RETURN:
+        if teclas_pressionadas[pygame.K_RETURN]:
                 if cena.modo == "PRINCIPAL":
                     if objetos[1].selecionado:
                         cena.modo = "JOGO"
@@ -55,10 +51,15 @@ def menuPrincipalUpdate(objetos, cena):
                     elif objetos[4].selecionado:
                         pygame.quit()
                         sys.exit()
-            if event.key == pygame.K_ESCAPE:
+        if teclas_pressionadas[pygame.K_ESCAPE]:
                 cena.modo = "PRINCIPAL"
 
 
+def selecionar(objetos, index):
+    time.sleep(0.5)
+    for obj in objetos:
+        obj.selecionado = False
+    objetos[index].selecionado = True
     # myfont = pygame.font.SysFont('Arial', 30)
     # font = myfont.render('- undefined -', False, (0, 0, 0))
     # tela.blit(font,(0,0))

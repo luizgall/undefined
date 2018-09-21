@@ -22,6 +22,8 @@ class Cena:
         self.bg = ""
         self.fisica = Physics()
         self.camera = Camera()
+        self.contador = 0
+        self.contar = False
     def start(self):
         print("Start Cena ", self.nome)
         ## criar objetos
