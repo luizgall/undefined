@@ -42,16 +42,16 @@ def fase1Update(objetos, cena):
         # if event.type == pygame.KEYUP:
         #     cena.jogador.vel = [0,0]
         
-        teclas_pressionadas = pygame.key.get_pressed()
-        if teclas_pressionadas[pygame.K_LEFT]:
+    teclas_pressionadas = pygame.key.get_pressed()
+    if teclas_pressionadas[pygame.K_LEFT]:
             print(cena.jogador.vel)
             cena.jogador.vel[0] = -10
-        elif teclas_pressionadas[pygame.K_RIGHT]:
+    elif teclas_pressionadas[pygame.K_RIGHT]:
             cena.jogador.vel[0] = 10
-        else:
+    else:
             cena.jogador.vel[0] = 0
         
-        if teclas_pressionadas[pygame.K_UP]:
+    if teclas_pressionadas[pygame.K_UP]:
             if(cena.modo == "PAUSE"):
                 if objetos[2].selecionado:
                     objetos[2].selecionado = False
@@ -66,7 +66,7 @@ def fase1Update(objetos, cena):
                 cena.jogador.vel[1] -= 15
                 cena.jogador.caindo = True
 
-        if teclas_pressionadas[pygame.K_DOWN]:
+    if teclas_pressionadas[pygame.K_DOWN]:
             if(cena.modo == "PAUSE"):
                 if objetos[2].selecionado:
                     objetos[2].selecionado = False
@@ -78,7 +78,7 @@ def fase1Update(objetos, cena):
                     objetos[4].selecionado = False
                     objetos[2].selecionado = True  
 
-        if teclas_pressionadas[pygame.K_ESCAPE]:
+    if teclas_pressionadas[pygame.K_ESCAPE]:
             if(cena.modo == "PAUSE"):
                 cena.camera.definirFoco(cena.jogador.pos)                
                 cena.modo = "fase1"
@@ -87,7 +87,7 @@ def fase1Update(objetos, cena):
                 cena.modo = "PAUSE"
                 cena.camera.definirFoco([0,0])
         
-        if teclas_pressionadas[pygame.K_RETURN]:
+    if teclas_pressionadas[pygame.K_RETURN]:
             if(cena.modo == "PAUSE" and objetos[2].selecionado):
                 cena.camera.definirFoco(cena.jogador.pos)                
                 cena.modo = "fase1"

@@ -4,7 +4,7 @@ from assetLoader import assetLoader
 class Animacao():
     def __init__(self, model):
         self.frames = []
-        self.vel = 10
+        self.vel = 5
         self.pos = [0,0]
         self.frameAtual = 0
         self.loop = True

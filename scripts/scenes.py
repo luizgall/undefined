@@ -5,11 +5,12 @@ from physics import Physics
 from camera import Camera
 from animacao import Animacao
 from assetLoader import assetLoader
+import copy
 
 class Cena:
     def __init__(self, model):
         self.nome = model["nome"]
-        self.objetosModel = model["objetos"]
+        self.objetosModel = copy.deepcopy(model["objetos"])
         self.modos = model["modos"]
         self.modo = self.modos[model["modoInicial"]]
         self.modoAtual = self.modos[model["modoInicial"]]
@@ -43,6 +44,8 @@ class Cena:
         self.fisica.atualizar(self.objetos)
         if self.bg != "":
             self.camera.drawBG(self.bg)
+        else:
+            tela.fill((255,255,255))
         self.camera.draw(self.objetos, self.modo)
         if self.terminou:
             return {
