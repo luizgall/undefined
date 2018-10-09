@@ -1,9 +1,13 @@
+import pygame 
+
 class Physics:
     def detectarColisao(self, obj, obj2):
-        if (obj.pos[1]+ obj.altura > obj2.pos[1]) and (obj.pos[1] + obj.altura < obj2.pos[1] + obj2.altura) and (obj.pos[0] + obj.largura> obj2.pos[0]) and (obj.pos[0] + obj.largura < obj2.pos[0] + obj2.largura):
-            return { "colidiu": True, "tipo": "topo"}
+        rect1 = pygame.Rect(obj.pos[0], obj.pos[1], obj.largura, obj.altura)
+        rect2 = pygame.Rect(obj2.pos[0], obj2.pos[1], obj2.largura, obj2.altura)
+        if rect1.colliderect(rect2):
+            return True
         else:
-            return {"colidiu": False}
+            return False
         
     def atualizar(self, objetos):
         for obj in objetos:
@@ -11,18 +15,43 @@ class Physics:
                 obj.vel[1] += 1  
                 obj.pos[0] += obj.vel[0]
                 obj.pos[1] += obj.vel[1]
+                
                 for obj2 in objetos:
                     if obj2.tipo != "player":
-                        colisao = self.detectarColisao(obj, obj2)
-                        if colisao["colidiu"]:
-                            if(colisao["tipo"] == "topo"):
+                        if self.detectarColisao(obj, obj2):
+                            # obj.vel[0] = obj.vel[0] * -0.1
+                            # obj.vel[1] = obj.vel[1] * -0.5
+                           
+                            if obj.vel[1] > 0:
                                 obj.vel[1] = 0
-                                obj.pos[1] -= 1
+                                obj.pos[1] = obj2.pos[1] - 1 - obj.altura
                                 obj.caindo = False
+                            # elif obj.vel[0] >= 0 and obj.pos[1] > obj2.pos[1]:
+                            #     obj.vel[0] = 0
+                            #     obj.pos[0] = obj2.pos[0] - obj.largura - 1
+                        # else:
+                        #     obj.caindo = True
+                            # if(colisao["tipo"] == "topo"):
+                            #     obj.vel[1] = 0
+                            #     obj.pos[1] = obj2.pos[1] - 1 - obj.altura
+                            #     obj.caindo = False
+                            # if(colisao["tipo"] == "esquerda"):
+                            #     pass
+                                # obj.vel[0] = 0
+                                # obj.pos[0] = obj.pos[0] - obj2.pos[0] + obj2.largura
                             # if(colisao["tipo"] == "topoDireita"):                            
                             #     obj.pos[0] = obj2.pos[0]
 
 
+class Forca():
+    def __init__(self):
+        self.x = 0
+        self.y = 0
+        pass
+    def adicionar(self, forca):
+        
+        return 
+    
 
 # def drawLine(obj, a,b,x,y):
 #     while a != x or b != y:

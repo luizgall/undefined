@@ -171,15 +171,24 @@ menuPrincipal = {
         {
                 "tipo": "texto",
                 "nome": "botao",
-                "pos": [220, 100],
+                "pos": [50, 100],
                 "id": "1",
-                "texto": "Criador por",
+                "texto": "Criador pelo aluno de Ciência da Computação",
                 "camada": "CREDITOS"
             },
         {
                 "tipo": "texto",
                 "nome": "botao",
-                "pos": [230, 200],
+                "pos": [70, 200],
+                "id": "1",
+                "texto": "da Universidade Presbiteriana Mackenzie",
+                "camada": "CREDITOS"
+            },
+
+             {
+                "tipo": "texto",
+                "nome": "botao",
+                "pos": [230, 300],
                 "id": "1",
                 "texto": "Luiz Gall",
                 "camada": "CREDITOS"
@@ -201,17 +210,12 @@ menuPrincipal = {
                 "camada": "PRINCIPAL",
                 "frames": [
                     "menuBg1.jpg",
-                    "menuBg2.jpg",
                     "menuBg3.jpg",
-                    "menuBg4.jpg",
-                    "menuBg5.jpg",
                     "menuBg6.jpg",
                     "menuBg5.jpg",
                     "menuBg4.jpg",
                     "menuBg3.jpg",
-                    "menuBg2.jpg",
-                    
-                    
+                    "menuBg2.jpg"        
                 ]
             }
 
