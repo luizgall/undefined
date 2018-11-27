@@ -4,6 +4,7 @@ from tela import tela
 from physics import Physics
 from camera import Camera
 from animacao import Animacao
+from animacao import Parallax
 from assetLoader import assetLoader
 import copy
 
@@ -16,6 +17,7 @@ class Cena:
         self.modoAtual = self.modos[model["modoInicial"]]
         self.objetos = []
         self.terminou = False
+        self.fimJogo = model["fimJogo"]
         self.proximaCena = ""
         self.iniciarCena = model["start"]
         self.atualizarCena = model["update"]
@@ -31,6 +33,8 @@ class Cena:
         for obj in self.objetosModel:
             if obj["tipo"] == "animacao": 
                 self.bg = Animacao(obj)
+            elif obj["tipo"] == "parallax": 
+                self.parallax = Parallax(obj)
             else:
                 novoObjeto = GameObject(obj)
                 if obj["tipo"] == "player":
@@ -41,9 +45,11 @@ class Cena:
         self.iniciarCena(self.objetos, self)
     def update(self):
         self.atualizarCena(self.objetos, self)
-        self.fisica.atualizar(self.objetos)
+        self.fisica.atualizar(self.objetos, self)
         if self.bg != "":
             self.camera.drawBG(self.bg)
+        elif self.parallax != "":
+            self.camera.drawParallax(self.parallax)
         else:
             tela.fill((255,255,255))
         self.camera.draw(self.objetos, self.modo)

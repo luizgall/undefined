@@ -9,19 +9,41 @@ class Physics:
         else:
             return False
         
-    def atualizar(self, objetos):
+    def atualizar(self, objetos, cena):
         for obj in objetos:
             if(obj.tipo == "player"):
                 obj.vel[1] += 1  
                 obj.pos[0] += obj.vel[0]
                 obj.pos[1] += obj.vel[1]
                 
+                if(obj.vel[0] > 0):
+                    cena.parallax.frame3Pos[0] -= 2
+                    cena.parallax.frame2Pos[0] -= 1
+                    cena.parallax.frame1Pos[0] -= 0.5
+               
+                if(obj.vel[0] < 0):
+                    cena.parallax.frame3Pos[0] += 2
+                    cena.parallax.frame2Pos[0] += 1
+                    cena.parallax.frame1Pos[0] += 0.5
+
+                if( cena.parallax.frame3Pos[0] + 600 < 0):
+                     cena.parallax.frame3Pos[0] = 0
+
+                if( cena.parallax.frame2Pos[0] + 600 < 0):
+                     cena.parallax.frame2Pos[0] = 0
+
+
+                if( cena.parallax.frame1Pos[0] + 600 < 0):
+                    cena.parallax.frame1Pos[0] = 0
+
                 for obj2 in objetos:
                     if obj2.tipo != "player":
                         if self.detectarColisao(obj, obj2):
                             # obj.vel[0] = obj.vel[0] * -0.1
                             # obj.vel[1] = obj.vel[1] * -0.5
-                           
+
+                            if(obj2.tipo == "inimigo"):
+                                cena.fimJogo(cena)
                             if obj.vel[1] > 0:
                                 obj.vel[1] = 0
                                 obj.pos[1] = obj2.pos[1] - 1 - obj.altura

@@ -13,6 +13,12 @@ obsModel = {
 def criarObstaculo(cena):
     obstaculo = GameObject(obsModel)
     cena.objetos.append(obstaculo)
+
+def fimJogo(cena):
+    cena.modo = "fase1"                
+    cena.terminou = True
+    cena.jogador.pos = [0,0]
+    cena.proximaCena = "fase1"
     
 def fase1Start(objetos, cena):
     criarObstaculo(cena)
@@ -21,7 +27,8 @@ def fase1Update(objetos, cena):
     
     # if len(cena.objetos) < 4:
     #     criarObstaculo()
-
+    if(cena.jogador.pos[1] > 1000):
+        cena.fimJogo(cena)
     events = pygame.event.get()
     for event in events:
             if event.type == pygame.QUIT:
@@ -144,6 +151,7 @@ fase1 = {
     "modoInicial": 0,
     "start": fase1Start,
     "update": fase1Update,
+    "fimJogo": fimJogo,
     "objetos": [
             {
              "tipo": "plataforma", 
@@ -194,6 +202,30 @@ fase1 = {
              "pos": [200, 280], 
              "altura": 100,
              "largura": 100
+        },
+
+        #  {
+        #      "tipo": "inimigo", 
+        #      "camada": "fase1",
+        #      "nome": "inimigo1",      
+        #      "pos": [500, 280], 
+        #      "altura": 50,
+        #      "largura": 50
+        # },
+
+        {
+             "tipo": "parallax", 
+             "camada": "fase1",
+             "nome": "parallax1",      
+             "pos": [500, 280], 
+             "altura": 50,
+             "largura": 50,
+             "frames": [
+                    "sky.png",
+                    "bg3.png",
+                    "bg2.png",
+                    "bg1.png"      
+                ]
         }
     ]
 }

@@ -6,6 +6,8 @@ import sys
 def menuPrincipalStart(objetos, cena):
     objetos[1].selecionado = True
 
+def fimJogo():
+    pass
 
 def menuPrincipalUpdate(objetos, cena):
         events = pygame.event.get()
@@ -84,6 +86,7 @@ menuPrincipal = {
     "modoInicial": 0,
     "start": menuPrincipalStart,
     "update": menuPrincipalUpdate,
+    "fimJogo": fimJogo,
     "objetos": [
             {
                 "tipo": "logo",

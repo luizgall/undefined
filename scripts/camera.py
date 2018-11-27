@@ -16,6 +16,9 @@ class Camera:
     def drawBG(self, objeto):
         objeto.play()
 
+    def drawParallax(self, objeto):
+        objeto.draw()
+
     def definirFoco(self, objetoPos):
         self.foco = objetoPos
         self.pos = objetoPos
